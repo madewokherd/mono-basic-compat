@@ -3,7 +3,8 @@ VBC=vbc
 SN=sn
 
 SRCS = \
-	AssemblyInfo.vb
+	AssemblyInfo.vb \
+	Microsoft.VisualBasic.Compatibility.VB6/BaseControlArray.vb
 
 all: Microsoft.VisualBasic.Compatibility.dll
 .PHONY: all
