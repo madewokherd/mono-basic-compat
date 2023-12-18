@@ -51,6 +51,13 @@ Public MustInherit Class BaseControlArray
 
 	' Protected fields
 	Protected components As IContainer
+	Protected fIsEndInitCalled As Boolean
+
+	' Protected methods
+	Protected Sub BaseSetIndex (ctl As Object, Index As Short, Optional fIsDynamic as Boolean = False)
+		' TODO: Store index
+		HookUpControlEvents (ctl)
+	End Sub
 
 	' Method overrides
 	Protected Overrides Sub Dispose (disposing as Boolean)
@@ -59,11 +66,10 @@ Public MustInherit Class BaseControlArray
 	' ISupportInitialize
 
 	Sub BeginInit () Implements ISupportInitialize.BeginInit
-		Throw New NotImplementedException()
 	End Sub
 
 	Sub EndInit () Implements ISupportInitialize.EndInit
-		Throw New NotImplementedException()
+		fIsEndInitCalled = True
 	End Sub
 
 End Class

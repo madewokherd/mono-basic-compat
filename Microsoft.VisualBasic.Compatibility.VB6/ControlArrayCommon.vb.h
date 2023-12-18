@@ -57,6 +57,11 @@ Implements IExtenderProvider
 		CONCAT(TYPE, _HookupControlEvents) (DirectCast(o,TYPE))
 	End Sub
 
+	' Public methods
+	Public Sub SetIndex (o As TYPE, Index As Short)
+		BaseSetIndex (o, Index, fIsEndInitCalled)
+	End Sub
+
 	'IExtenderProvider
 	Public Function CanExtend (target As Object) As Boolean Implements IExtenderProvider.CanExtend
 		Throw New NotImplementedException()
