@@ -6,7 +6,14 @@ CPP=cpp
 SRCS = \
 	AssemblyInfo.vb \
 	Microsoft.VisualBasic.Compatibility.VB6/BaseControlArray.vb \
-	Microsoft.VisualBasic.Compatibility.VB6/LabelArray.generated.vb
+	Microsoft.VisualBasic.Compatibility.VB6/ButtonArray.generated.vb \
+	Microsoft.VisualBasic.Compatibility.VB6/CheckBoxArray.generated.vb \
+	Microsoft.VisualBasic.Compatibility.VB6/ComboBoxArray.generated.vb \
+	Microsoft.VisualBasic.Compatibility.VB6/GroupBoxArray.generated.vb \
+	Microsoft.VisualBasic.Compatibility.VB6/LabelArray.generated.vb \
+	Microsoft.VisualBasic.Compatibility.VB6/RadioButtonArray.generated.vb \
+	Microsoft.VisualBasic.Compatibility.VB6/TextBoxArray.generated.vb \
+	Microsoft.VisualBasic.Compatibility.VB6/ToolStripMenuItemArray.generated.vb
 
 all: Microsoft.VisualBasic.Compatibility.dll
 .PHONY: all

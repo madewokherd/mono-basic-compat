@@ -47,6 +47,9 @@ Implements IExtenderProvider
 #ifndef SUPPRESSCONTROLEVENTS
 		Control_HookupControlEvents (DirectCast(o,TYPE))
 #endif
+#ifdef TEXTBOXBASE
+		TextBoxBase_HookupControlEvents (DirectCast(o,TYPE))
+#endif
 		CONCAT(TYPE, _HookupControlEvents) (DirectCast(o,TYPE))
 	End Sub
 
@@ -64,6 +67,18 @@ Implements IExtenderProvider
 	Public Event AutoSizeChanged As EventHandler
 	Private Sub Control_AutoSizeChanged (sender As Object, e As EventArgs)
 		RaiseEvent AutoSizeChanged(sender, e)
+	End Sub
+#endif
+
+#ifdef TEXTBOXBASE
+	' Events on TextBoxBase type
+	Private Sub TextBoxBase_HookupControlEvents (o As TYPE)
+		AddHandler o.AcceptsTabChanged, AddressOf TextBoxBase_AcceptsTabChanged
+	End Sub
+
+	Public Event AcceptsTabChanged As EventHandler
+	Private Sub TextBoxBase_AcceptsTabChanged (sender As Object, e As EventArgs)
+		RaiseEvent AcceptsTabChanged(sender, e)
 	End Sub
 #endif
 
