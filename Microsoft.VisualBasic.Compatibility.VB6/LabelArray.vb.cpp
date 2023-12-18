@@ -1,5 +1,5 @@
 '
-' LabelArray.vb
+' LabelArray.vb.cpp
 '
 ' Authors:
 '   Esme Povirk <esme@codeweavers.com>
@@ -32,24 +32,21 @@ Imports System.Windows.Forms
 
 Namespace Microsoft.VisualBasic.Compatibility.VB6
 
-<Obsolete()>
-Public Class LabelArray
-Inherits BaseControlArray
-Implements IExtenderProvider
+#define TYPE Label
 
-	'BaseControlArray abstract methods
-	Protected Overrides Function GetControlInstanceType () As Type
-		GetControlInstanceType = GetType(Label)
-	End Function
+#include "ControlArrayCommon.vb.h"
 
-	Protected Overrides Sub HookUpControlEvents (o As Object)
+Public Partial Class CLASSNAME
+	' Events
+	Private Sub Label_HookupControlEvents (o As TYPE)
+		AddHandler o.TextAlignChanged, AddressOf Label_TextAlignChanged
 	End Sub
 
-	'IExtenderProvider
-	Public Function CanExtend (target As Object) As Boolean Implements IExtenderProvider.CanExtend
-		Throw New NotImplementedException()
-	End Function
-
+	Public Event TextAlignChanged As EventHandler
+	Private Sub Label_TextAlignChanged (sender As Object, e As EventArgs)
+		RaiseEvent TextAlignChanged (sender, e)
+	End Sub
 End Class
 
 End Namespace
+
