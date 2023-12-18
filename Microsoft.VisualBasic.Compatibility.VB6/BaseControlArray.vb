@@ -89,6 +89,20 @@ Public MustInherit Class BaseControlArray
 		BaseSetIndex (ctl, Index, true)
 	End Sub
 
+	Public Function UBound () As Short
+		If controls.Count = 0 Then
+			Throw New IndexOutOfRangeException("Control array has no members")
+		End If
+		UBound = Short.MinValue
+		For Each idx In controls.Keys
+			Dim i As Short
+			i = DirectCast(idx, Short)
+			If i > UBound
+				UBound = i
+			End If
+		Next idx
+	End Function
+
 	Public Sub Unload (Index As Short)
 		Dim ctl As Object
 		ctl = BaseGetItem (Index)
