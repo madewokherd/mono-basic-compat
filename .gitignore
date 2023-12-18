@@ -1,0 +1,4 @@
+/.built
+*.generated.vb
+Microsoft.VisualBasic.Compatibility.dll
+Microsoft.VisualBasic.Compatibility.pdb
