@@ -61,6 +61,7 @@ Public MustInherit Class BaseControlArray
 	End Function
 
 	Protected Sub BaseSetIndex (ctl As Object, Index As Short, Optional fIsDynamic as Boolean = False)
+		' sync with Unload method
 		components.Add (DirectCast(ctl, IComponent))
 		controls.Add (Index, ctl)
 		HookUpControlEvents (ctl)
@@ -70,6 +71,15 @@ Public MustInherit Class BaseControlArray
 	Public Function Count () As Short
 		Return controls.Count
 	End Function
+
+	Public Sub Unload (Index As Short)
+		Dim ctl As Object
+		ctl = BaseGetItem (Index)
+
+		components.Remove (DirectCast(ctl, IComponent))
+		controls.Remove (Index)
+		' Unregistering events doesn't seem to be possible
+	End Sub
 
 	' Method overrides
 	Protected Overrides Sub Dispose (disposing as Boolean)
