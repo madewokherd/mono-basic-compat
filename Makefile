@@ -15,6 +15,6 @@ all: Microsoft.VisualBasic.Compatibility.dll
 	$(CPP) -P -w $< -o $@
 
 Microsoft.VisualBasic.Compatibility.dll: $(SRCS)
-	$(VBC) -target:library -debug+ -out:$@ $(SRCS)
+	$(VBC) -target:library -debug+ -define:_MYTYPE='"Empty"' -out:$@ $(SRCS)
 	$(SN) -R $@ mono.snk
 
