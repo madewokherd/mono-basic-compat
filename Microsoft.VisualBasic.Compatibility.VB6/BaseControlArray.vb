@@ -54,16 +54,22 @@ Public MustInherit Class BaseControlArray
 	Protected components As IContainer
 	Protected controls As New Hashtable
 	Protected fIsEndInitCalled As Boolean
+	Protected indices As New Hashtable
 
 	' Protected methods
 	Protected Function BaseGetItem (Index As Short) As Object
 		Return controls(Index)
 	End Function
 
+	Protected Function BaseGetIndex (ctl As Object) As Short
+		Return indices(ctl)
+	End Function
+
 	Protected Sub BaseSetIndex (ctl As Object, Index As Short, Optional fIsDynamic as Boolean = False)
 		' sync with Unload method
 		components.Add (DirectCast(ctl, IComponent))
 		controls.Add (Index, ctl)
+		indices.Add (ctl, Index)
 		HookUpControlEvents (ctl)
 	End Sub
 
@@ -89,6 +95,7 @@ Public MustInherit Class BaseControlArray
 
 		components.Remove (DirectCast(ctl, IComponent))
 		controls.Remove (Index)
+		indices.Remove (ctl)
 		' Unregistering events doesn't seem to be possible
 	End Sub
 

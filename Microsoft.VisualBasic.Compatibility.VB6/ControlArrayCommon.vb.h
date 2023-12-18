@@ -64,6 +64,10 @@ Implements IExtenderProvider
 		End Get
 	End Property
 
+	Public Function GetIndex (o As TYPE) As Short
+		Return BaseGetIndex (o)
+	End Function
+
 	Public Sub SetIndex (o As TYPE, Index As Short)
 		BaseSetIndex (o, Index)
 	End Sub
