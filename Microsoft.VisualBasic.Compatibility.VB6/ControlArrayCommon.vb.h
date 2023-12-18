@@ -82,6 +82,9 @@ Implements IExtenderProvider
 	Private Sub Control_HookupControlEvents (o As TYPE)
 		AddHandler o.AutoSizeChanged, AddressOf Control_AutoSizeChanged
 		AddHandler o.Click, AddressOf Control_Click
+		AddHandler o.MouseDown, AddressOf Control_MouseDown
+		AddHandler o.MouseMove, AddressOf Control_MouseMove
+		AddHandler o.MouseUp, AddressOf Control_MouseUp
 	End Sub
 
 	Public Event AutoSizeChanged As EventHandler
@@ -92,6 +95,21 @@ Implements IExtenderProvider
 	Public Event Click As EventHandler
 	Private Sub Control_Click (sender As Object, e As EventArgs)
 		RaiseEvent Click(sender, e)
+	End Sub
+
+	Public Event MouseDown As MouseEventHandler
+	Private Sub Control_MouseDown (sender As Object, e As MouseEventArgs)
+		RaiseEvent MouseDown(sender, e)
+	End Sub
+
+	Public Event MouseMove As MouseEventHandler
+	Private Sub Control_MouseMove (sender As Object, e As MouseEventArgs)
+		RaiseEvent MouseMove(sender, e)
+	End Sub
+
+	Public Event MouseUp As MouseEventHandler
+	Private Sub Control_MouseUp (sender As Object, e As MouseEventArgs)
+		RaiseEvent MouseUp(sender, e)
 	End Sub
 #endif
 
