@@ -65,7 +65,7 @@ Implements IExtenderProvider
 	End Property
 
 	Public Sub SetIndex (o As TYPE, Index As Short)
-		BaseSetIndex (o, Index, fIsEndInitCalled)
+		BaseSetIndex (o, Index)
 	End Sub
 
 	'IExtenderProvider

@@ -72,6 +72,17 @@ Public MustInherit Class BaseControlArray
 		Return controls.Count
 	End Function
 
+	Public Sub Load (Index As Short)
+		Dim ctl As Object
+		Dim t As Type
+
+		t = GetControlInstanceType()
+
+		ctl = t.GetConstructor(New System.Type() {}).Invoke(New Object() {})
+
+		BaseSetIndex (ctl, Index, true)
+	End Sub
+
 	Public Sub Unload (Index As Short)
 		Dim ctl As Object
 		ctl = BaseGetItem (Index)
