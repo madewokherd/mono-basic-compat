@@ -40,11 +40,17 @@ Public Partial Class CLASSNAME
 	' Events
 	Private Sub ComboBox_HookupControlEvents (o As TYPE)
 		AddHandler o.DropDown, AddressOf ComboBox_DropDown
+		AddHandler o.SelectedIndexChanged, AddressOf ComboBox_SelectedIndexChanged
 	End Sub
 
 	Public Event DropDown As EventHandler
 	Private Sub ComboBox_DropDown (sender As Object, e As EventArgs)
 		RaiseEvent DropDown (sender, e)
+	End Sub
+
+	Public Event SelectedIndexChanged As EventHandler
+	Private Sub ComboBox_SelectedIndexChanged (sender As Object, e As EventArgs)
+		RaiseEvent SelectedIndexChanged (sender, e)
 	End Sub
 End Class
 

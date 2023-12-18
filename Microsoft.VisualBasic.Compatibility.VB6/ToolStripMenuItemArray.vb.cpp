@@ -41,11 +41,17 @@ Public Partial Class CLASSNAME
 	' Events
 	Private Sub ToolStripMenuItem_HookupControlEvents (o As TYPE)
 		AddHandler o.BackColorChanged, AddressOf ToolStripMenuItem_BackColorChanged
+		AddHandler o.Click, AddressOf ToolStripMenuItem_Click
 	End Sub
 
 	Public Event BackColorChanged As EventHandler
 	Private Sub ToolStripMenuItem_BackColorChanged (sender As Object, e As EventArgs)
 		RaiseEvent BackColorChanged (sender, e)
+	End Sub
+
+	Public Event Click As EventHandler
+	Private Sub ToolStripMenuItem_Click (sender As Object, e As EventArgs)
+		RaiseEvent Click (sender, e)
 	End Sub
 End Class
 

@@ -71,11 +71,17 @@ Implements IExtenderProvider
 	' Events on Control type
 	Private Sub Control_HookupControlEvents (o As TYPE)
 		AddHandler o.AutoSizeChanged, AddressOf Control_AutoSizeChanged
+		AddHandler o.Click, AddressOf Control_Click
 	End Sub
 
 	Public Event AutoSizeChanged As EventHandler
 	Private Sub Control_AutoSizeChanged (sender As Object, e As EventArgs)
 		RaiseEvent AutoSizeChanged(sender, e)
+	End Sub
+
+	Public Event Click As EventHandler
+	Private Sub Control_Click (sender As Object, e As EventArgs)
+		RaiseEvent Click(sender, e)
 	End Sub
 #endif
 

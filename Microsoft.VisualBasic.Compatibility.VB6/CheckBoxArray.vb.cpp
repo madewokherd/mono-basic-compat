@@ -40,11 +40,17 @@ Public Partial Class CLASSNAME
 	' Events
 	Private Sub CheckBox_HookupControlEvents (o As TYPE)
 		AddHandler o.AppearanceChanged, AddressOf CheckBox_AppearanceChanged
+		AddHandler o.AppearanceChanged, AddressOf CheckBox_CheckStateChanged
 	End Sub
 
 	Public Event AppearanceChanged As EventHandler
 	Private Sub CheckBox_AppearanceChanged (sender As Object, e As EventArgs)
 		RaiseEvent AppearanceChanged (sender, e)
+	End Sub
+
+	Public Event CheckStateChanged As EventHandler
+	Private Sub CheckBox_CheckStateChanged (sender As Object, e As EventArgs)
+		RaiseEvent CheckStateChanged (sender, e)
 	End Sub
 End Class
 
