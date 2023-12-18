@@ -27,6 +27,7 @@
 '
 
 Imports System
+Imports System.Collections
 Imports System.ComponentModel
 
 Namespace Microsoft.VisualBasic.Compatibility.VB6
@@ -51,11 +52,17 @@ Public MustInherit Class BaseControlArray
 
 	' Protected fields
 	Protected components As IContainer
+	Protected controls As New Hashtable
 	Protected fIsEndInitCalled As Boolean
 
 	' Protected methods
+	Protected Function BaseGetItem (Index As Short) As Object
+		Return controls(Index)
+	End Function
+
 	Protected Sub BaseSetIndex (ctl As Object, Index As Short, Optional fIsDynamic as Boolean = False)
-		' TODO: Store index
+		components.Add (DirectCast(ctl, IComponent))
+		controls.Add (Index, ctl)
 		HookUpControlEvents (ctl)
 	End Sub
 

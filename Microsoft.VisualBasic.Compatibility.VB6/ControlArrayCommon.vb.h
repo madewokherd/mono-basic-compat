@@ -58,6 +58,12 @@ Implements IExtenderProvider
 	End Sub
 
 	' Public methods
+	Default Public ReadOnly Property Item(Index As Short) As TYPE
+		Get
+			Return DirectCast(BaseGetItem (Index), TYPE)
+		End Get
+	End Property
+
 	Public Sub SetIndex (o As TYPE, Index As Short)
 		BaseSetIndex (o, Index, fIsEndInitCalled)
 	End Sub
