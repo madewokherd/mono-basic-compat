@@ -66,6 +66,11 @@ Public MustInherit Class BaseControlArray
 		HookUpControlEvents (ctl)
 	End Sub
 
+	' Public Methods
+	Public Function Count () As Short
+		Return controls.Count
+	End Function
+
 	' Method overrides
 	Protected Overrides Sub Dispose (disposing as Boolean)
 	End Sub
