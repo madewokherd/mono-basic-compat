@@ -42,12 +42,15 @@ Public MustInherit Class BaseControlArray
 	End Sub
 
 	Protected Sub New (Container As IContainer)
-		Throw New NotImplementedException()
+		components = Container
 	End Sub
 
 	' Abstract methods
 	Protected MustOverride Function GetControlInstanceType () As Type
 	Protected MustOverride Sub HookUpControlEvents (o As Object)
+
+	' Protected fields
+	Protected components As IContainer
 
 	' Method overrides
 	Protected Overrides Sub Dispose (disposing as Boolean)

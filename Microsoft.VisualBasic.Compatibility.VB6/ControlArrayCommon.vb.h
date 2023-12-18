@@ -38,6 +38,10 @@ Public Partial Class CLASSNAME
 Inherits BaseControlArray
 Implements IExtenderProvider
 
+	Public Sub New(Container as IContainer)
+		MyBase.New (Container)
+	End Sub
+
 	'BaseControlArray abstract methods
 	Protected Overrides Function GetControlInstanceType () As Type
 		GetControlInstanceType = GetType(TYPE)
